@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Marmeto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        
+        <div class="logo">
+            <img src="images/micon.jpg" alt="Marmeto Logo" class="logo-img">
+            <span class="logo-text">Marmeto</span>
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="header-icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </header>
+
+    <div class="hero">
+        
+    </div>
+
+    <div class="cart">
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Dynamic content will be loaded here -->
+            </tbody>
+        </table>
+
+        <div class="cart-totals">
+            <h2>Cart Totals</h2>
+            <p><span>Subtotal:</span> <span id="subtotal">Rs. 0.00</span></p>
+            <p><span>Total:</span> <span id="total">Rs. 0.00</span></p>
+            <button id="checkout-button">Check Out</button>
+        </div>
+    </div>
+
+    <div class="feature-list">
+        <div class="feature-item">
+            <img src="images/one.jpg" alt="High Quality" class="feature-icon">
+            <div>
+                <p class="heading">High Quality</p>
+                <p>Crafted from top materials</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <img src="images/two.jpg" alt="Warranty Protection" class="feature-icon">
+            <div>
+                <p class="heading">Warranty Protection</p>
+                <p>Over 2 years</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <img src="images/three.jpg" alt="Free Shipping" class="feature-icon">
+            <div>
+                <p class="heading">Free Shipping</p>
+                <p>Order over 150 $</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <img src="images/four.jpg" alt="24/7 Support" class="feature-icon">
+            <div>
+                <p class="heading">24 / 7 Support</p>
+                <p>Dedicated support</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
