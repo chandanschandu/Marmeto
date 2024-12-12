@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event delegation for delete buttons and quantity inputs
     cartItemsContainer.addEventListener('click', (event) => {
-        if (event.target.classList.contains('delete-btn')) {
+        if (event.target.classList.contains('delete-btn1')) {
             handleDeleteButtonClick1(event);
         }
     });
