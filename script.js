@@ -85,4 +85,49 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Error fetching cart data:', error);
         });
+     function handleDeleteButtonClick(event) {
+        const index = event.target.getAttribute('data-index');
+        if (confirm('Are you sure you want to delete this item?')) {
+            items.splice(index, 1); // Remove item from the array
+            renderCartItems(); // Re-render cart items
+        }
+    }
+
+    // Function to handle quantity change
+    function handleQuantityChange(event) {
+        const index = event.target.getAttribute('data-index');
+        const newQuantity = parseInt(event.target.value, 10);
+
+        if (newQuantity > 0) {
+            items[index].quantity = newQuantity; // Update item quantity
+            renderCartItems(); // Re-render cart items
+        }
+    }
+
+    // Function to handle checkout button click
+    function handleCheckoutButtonClick() {
+        alert('Booking Confirmed');
+    }
+
+    // Event delegation for delete buttons and quantity inputs
+    cartItemsContainer.addEventListener('click', (event) => {
+        if (event.target.classList.contains('delete-btn')) {
+            handleDeleteButtonClick(event);
+        }
+    });
+
+    cartItemsContainer.addEventListener('input', (event) => {
+        if (event.target.type === 'number') {
+            handleQuantityChange(event);
+        }
+    });
+
+    // Attach event listener to checkout button
+    checkoutButton.addEventListener('click', handleCheckoutButtonClick);
+
+    // Initial render of cart items
+    renderCartItems();
 });
+
+    
+
