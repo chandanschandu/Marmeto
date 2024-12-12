@@ -121,6 +121,15 @@ document.addEventListener('DOMContentLoaded', () => {
             handleQuantityChange(event);
         }
     });
+    document.addEventListener('DOMContentLoaded', () => {
+    const checkoutButton = document.getElementById('checkout-button');
+
+    checkoutButton.addEventListener('click', () => {
+        alert('Booking Confirmed');
+    });
+});
+    
+    
 
     // Attach event listener to checkout button
     checkoutButton.addEventListener('click', handleCheckoutButtonClick);
