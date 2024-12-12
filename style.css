@@ -1,9 +1,15 @@
 /* General Styles */
 /* Importing Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
+@import url(https://fonts.gstatic.com/s/roboto/v32/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');
+@font-face {
+    font-family: 'Roboto';
+    src: url('https://fonts.gstatic.com/s/roboto/v32/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 /* General Styles */
 body {
+  
   font-family: 'Roboto', Arial, sans-serif; /* Apply 'Roboto' font */
   margin: 0;
   padding: 0;
@@ -20,7 +26,18 @@ main {
 
 /* Header, Cart Section, and other styles remain unchanged... */
 
+header, footer, nav, table, .cart-totals, .feature-item, .feature-icon, a, button {
+    font-family: 'Roboto', Arial, sans-serif; /* Ensure Roboto is used across all elements */
+}
 
+/* Optional: Ensure specific elements are bold where needed */
+h2, .heading, button {
+    font-weight: bold; /* Make specific elements bold */
+}
+
+a {
+    text-decoration: none; /* Optional: Remove underline from links */
+}
 
 header {
   background-color: #fff;
