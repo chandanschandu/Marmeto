@@ -1,0 +1,310 @@
+/* General Styles */
+/* Importing Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* General Styles */
+body {
+  font-family: 'Roboto', Arial, sans-serif; /* Apply 'Roboto' font */
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ensure the body takes the full height of the viewport */
+}
+
+main {
+  flex: 1; /* This will ensure the content above the footer takes the available space */
+}
+
+/* Header, Cart Section, and other styles remain unchanged... */
+
+
+
+header {
+  background-color: #fff;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.header-icons {
+  display: flex;
+  gap: 20px;
+}
+
+/* Header Logo */
+/* Header Logo */
+header .logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+header .logo-img {
+  height: 40px;  /* Adjust the height of the logo */
+  width: auto;   /* Keep the aspect ratio of the logo */
+  margin-right: 10px; /* Space between the image and text */
+}
+
+header .logo-text {
+  font-size: 24px; /* Adjust the font size of the text */
+  font-weight: bold;
+  color: #333; /* Text color */
+}
+
+header nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  background-image: url('images/bg.jpg');
+  background-size: cover; /* Ensure the image covers the entire element */
+  background-position: center center; /* Center the image */
+  padding: 130px 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 36px;
+  color: #333;
+  margin: 0;
+}
+
+/* Cart Section */
+.cart {
+  
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  grid-gap: 20px;
+}
+
+.cart table {
+  width: 90%;
+  margin-left: 50px;
+  height: 50%;
+  border-collapse: collapse;
+   /* Pale background */
+}
+
+.cart table th,
+.cart table td {
+  text-align: left;
+  padding: 15px;
+  border: 1px solid #eaeaea;
+}
+
+.cart table th {
+  background-color: #fff2e7;
+  font-weight: 600;
+}
+
+.cart table td img {
+  max-width: 100px;
+  height: auto;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.cart table td input[type="number"] {
+  width: 50px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+}
+
+.cart-totals {
+  margin: 20px auto; /* Center the cart totals horizontally and add top/bottom margin */
+  padding: 40px;
+  width: 70%; /* Adjust the width to suit your design */
+  border: 1px solid #eaeaea;
+  background-color: #fff2e7;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for a subtle effect */
+}
+
+.cart-totals h2 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 20px; /* Space between heading and the content */
+  text-align: center; /* Align heading in the center */
+}
+
+.cart-totals p {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0; /* Add a bit more margin between items */
+  font-size: 16px;
+}
+
+.cart-totals button {
+  width: 100%;
+  padding: 12px; /* Slightly increased padding for a better look */
+  
+  border: 2px solid black; /* Black border with a thickness of 2px */
+  background-color: transparent; /* Transparent background */
+  color: #140101; /* Text color */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 20px; /* Space between total and the button */
+}
+
+.cart-totals button:hover {
+  background-color: #fff2e7; /* Optional: Add a subtle background color on hover */
+  color: white; /* Optional: Change text color on hover */
+}
+
+/* Features Section (Footer at the Bottom) */
+.features {
+  display: flex;
+  background-color: #fff2e7;
+  padding: 40px 40px;
+  flex-shrink: 0; /* Prevent shrinking of the footer */
+}
+
+.features div {
+  text-align: center;
+  flex: 1;
+  padding: 10px;
+}
+
+.features div p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.features div img {
+
+  max-width: 50px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.feature-list {
+  background-color: #fff2e7;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 40px 40px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.feature-icon {
+    width: 40px; /* Size of the small logo image */
+    height: 40px; /* Size of the small logo image */
+    margin-right: 10px; /* Space between the image and text */
+}
+
+.feature-item p.heading {
+    font-weight: bold; /* Make the heading text bold */
+    color: #333; /* Dark text color */
+    margin: 0; /* Remove margin */
+}
+
+.feature-item p:last-child {
+    font-size: 0.9em; /* Slightly smaller font size for the second paragraph */
+    color: #666; /* Light grey color */
+    margin: 0; /* Remove margin */
+}
+
+
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  color: gold;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.delete-btn:hover {
+  color: darkgoldenrod;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header .logo {
+    justify-content: center; /* Center logo and text */
+    margin-bottom: 10px; /* Space between logo and text */
+  }
+
+  header nav a {
+    margin: 5px 10px; /* Adjust margins for smaller screens */
+  }
+
+  .cart {
+    grid-template-columns: 1fr; /* Stack the cart content */
+  }
+
+  .cart-totals {
+    margin: 20px 0;
+    max-width: 100%;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .features div {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .feature-list {
+    padding: 20px;
+  }
+
+  .feature-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .feature-item p.heading {
+    font-size: 18px; /* Larger text for small screens */
+  }
+
+  .feature-item p:last-child {
+    font-size: 14px; /* Smaller text for descriptions */
+  }
+}
+
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  color: gold;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.delete-btn:hover {
+  color: darkgoldenrod;
+}
