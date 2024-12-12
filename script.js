@@ -132,10 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     // Attach event listener to checkout button
-    checkoutButton.addEventListener('click', handleCheckoutButtonClick);
-
-    // Initial render of cart items
-    renderCartItems();
+   
 });
 
     
