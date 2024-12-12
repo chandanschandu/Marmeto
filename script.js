@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Error fetching cart data:', error);
         });
-     function handleDeleteButtonClick(event) {
+     function handleDeleteButtonClick1(event) {
         const index = event.target.getAttribute('data-index');
         if (confirm('Are you sure you want to delete this item?')) {
             items.splice(index, 1); // Remove item from the array
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event delegation for delete buttons and quantity inputs
     cartItemsContainer.addEventListener('click', (event) => {
         if (event.target.classList.contains('delete-btn')) {
-            handleDeleteButtonClick(event);
+            handleDeleteButtonClick1(event);
         }
     });
 
