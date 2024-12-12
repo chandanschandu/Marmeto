@@ -11,39 +11,53 @@ document.addEventListener('DOMContentLoaded', () => {
             // Directly use the items from the fetched data
             const items = data.items;
 
-            // Create rows for cart items
-            items.forEach((item, index) => {
-                const row = document.createElement('tr');
+            // Function to render the cart items
+            function renderCartItems() {
+                // Clear the current cart items
+                cartItemsContainer.innerHTML = '';
 
-                // Create the product cell
-                const productCell = document.createElement('td');
-                productCell.innerHTML = `<img src="${item.image}" alt="${item.title}" style="width: 100px; height: auto;"> ${item.title}`;
-                row.appendChild(productCell);
+                // Create rows for cart items
+                items.forEach((item, index) => {
+                    const row = document.createElement('tr');
 
-                // Create the price cell
-                const priceCell = document.createElement('td');
-                priceCell.textContent = `Rs. ${(item.price / 100).toFixed(2)}`;
-                row.appendChild(priceCell);
+                    // Create the product cell
+                    const productCell = document.createElement('td');
+                    productCell.innerHTML = `<img src="${item.image}" alt="${item.title}" style="width: 100px; height: auto;"> ${item.title}`;
+                    row.appendChild(productCell);
 
-                // Create the quantity cell
-                const quantityCell = document.createElement('td');
-                quantityCell.innerHTML = `<input type="number" value="${item.quantity}" min="1" style="width: 50px;" data-index="${index}">`;
-                row.appendChild(quantityCell);
+                    // Create the price cell
+                    const priceCell = document.createElement('td');
+                    priceCell.textContent = `₹ ${(item.price / 100).toFixed(2)}`;
+                    row.appendChild(priceCell);
 
-                // Create the subtotal cell with the delete button
-                const subtotalCell = document.createElement('td');
-                const linePrice = item.price * item.quantity;
-                subtotalCell.innerHTML = `Rs. ${(linePrice / 100).toFixed(2)} <button class="delete-btn" data-index="${index}"></button>`;
-                row.appendChild(subtotalCell);
+                    // Create the quantity cell
+                    const quantityCell = document.createElement('td');
+                    quantityCell.innerHTML = `<input type="number" value="${item.quantity}" min="1" style="width: 50px;" data-index="${index}">`;
+                    row.appendChild(quantityCell);
 
-                // Append the row to the table body
-                cartItemsContainer.appendChild(row);
+                    // Create the subtotal cell with the delete button
+                    const subtotalCell = document.createElement('td');
+                    const linePrice = item.price * item.quantity;
+                    subtotalCell.innerHTML = `₹ ${(linePrice / 100).toFixed(2)} 
+                    <button class="delete-btn" data-index="${index}">🗑️</button>
+                    <button class="delete-btn1" data-index="${index}">Delete with Confirmation</button>`;
+                    row.appendChild(subtotalCell);
 
-                // Update subtotal
-                subtotal += linePrice;
-            });
+                    // Append the row to the table body
+                    cartItemsContainer.appendChild(row);
 
-            // Function to update subtotal and total when quantity changes
+                    // Update subtotal
+                    subtotal += linePrice;
+                });
+
+                // Update totals
+                subtotalElement.textContent = `₹ ${(subtotal / 100).toFixed(2)}`;
+                totalElement.textContent = `₹ ${(subtotal / 100).toFixed(2)}`;
+            }
+
+            renderCartItems(); // Initial render of cart items
+
+            // Function to update the cart totals when the quantity changes
             function updateCartTotals() {
                 let newSubtotal = 0;
                 const quantityInputs = document.querySelectorAll('.cart input[type="number"]');
@@ -52,19 +66,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     const newQuantity = parseInt(input.value);
                     const linePrice = item.price * newQuantity;
                     const subtotalCell = input.closest('tr').querySelector('td:nth-child(4)');
-                    subtotalCell.innerHTML = `Rs. ${(linePrice / 100).toFixed(2)} <button class="delete-btn" data-index="${index}">🗑️</button>`;
+                    subtotalCell.innerHTML = `₹ ${(linePrice / 100).toFixed(2)} 
+                    <button class="delete-btn" data-index="${index}">🗑️</button>
+                    <button class="delete-btn1" data-index="${index}">Delete with Confirmation</button>`;
                     newSubtotal += linePrice;
                 });
-                subtotalElement.textContent = `Rs. ${(newSubtotal / 100).toFixed(2)}`;
-                totalElement.textContent = `Rs. ${(newSubtotal / 100).toFixed(2)}`;
+                subtotalElement.textContent = `₹ ${(newSubtotal / 100).toFixed(2)}`;
+                totalElement.textContent = `₹ ${(newSubtotal / 100).toFixed(2)}`;
             }
 
-            // Add event listeners for quantity changes
-            document.querySelectorAll('input[type="number"]').forEach(input => {
-                input.addEventListener('input', updateCartTotals);
-            });
+            // Function to handle the deletion with confirmation
+            function handleDeleteButtonClick1(event) {
+                const index = event.target.getAttribute('data-index');
+                if (confirm('Are you sure you want to delete this item?')) {
+                    items.splice(index, 1); // Remove item from the array
+                    renderCartItems(); // Re-render cart items after deletion
+                }
+            }
 
-            // Function to handle delete button click
+            // Function to handle the delete button click (without confirmation)
             function handleDeleteButtonClick(event) {
                 const index = event.target.getAttribute('data-index');
                 const quantityInput = document.querySelectorAll('input[type="number"]')[index];
@@ -72,68 +92,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateCartTotals(); // Update the totals after the change
             }
 
-            // Add event delegation for delete button click
-            cartItemsContainer.addEventListener('click', function(event) {
-                if (event.target && event.target.classList.contains('delete-btn')) {
+            // Event delegation for delete buttons (without confirmation)
+            cartItemsContainer.addEventListener('click', (event) => {
+                if (event.target.classList.contains('delete-btn')) {
                     handleDeleteButtonClick(event);
+                } else if (event.target.classList.contains('delete-btn1')) {
+                    handleDeleteButtonClick1(event);
                 }
             });
 
-            // Initial update of totals
-            updateCartTotals();
+            // Event delegation for quantity changes
+            cartItemsContainer.addEventListener('input', (event) => {
+                if (event.target.type === 'number') {
+                    updateCartTotals();
+                }
+            });
         })
         .catch(error => {
             console.error('Error fetching cart data:', error);
         });
-     function handleDeleteButtonClick1(event) {
-        const index = event.target.getAttribute('data-index');
-        if (confirm('Are you sure you want to delete this item?')) {
-            items.splice(index, 1); // Remove item from the array
-            renderCartItems(); // Re-render cart items
-        }
-    }
 
-    // Function to handle quantity change
-    function handleQuantityChange(event) {
-        const index = event.target.getAttribute('data-index');
-        const newQuantity = parseInt(event.target.value, 10);
-
-        if (newQuantity > 0) {
-            items[index].quantity = newQuantity; // Update item quantity
-            renderCartItems(); // Re-render cart items
-        }
-    }
-
-    // Function to handle checkout button click
-    function handleCheckoutButtonClick() {
-        alert('Booking Confirmed');
-    }
-
-    // Event delegation for delete buttons and quantity inputs
-    cartItemsContainer.addEventListener('click', (event) => {
-        if (event.target.classList.contains('delete-btn1')) {
-            handleDeleteButtonClick1(event);
-        }
-    });
-
-    cartItemsContainer.addEventListener('input', (event) => {
-        if (event.target.type === 'number') {
-            handleQuantityChange(event);
-        }
-    });
-    document.addEventListener('DOMContentLoaded', () => {
+    // Attach event listener to checkout button
     const checkoutButton = document.getElementById('checkout-button');
-
     checkoutButton.addEventListener('click', () => {
         alert('Booking Confirmed');
     });
 });
-    
-    
-
-    // Attach event listener to checkout button
-   
-});
-
-    
-
